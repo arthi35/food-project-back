@@ -2,9 +2,11 @@ const express= require("express");
 const Pizza=require("./models/pizzaModel")
 const db=require("./db.js")
 const app=express();
+require('dotenv').config();
 const cors = require("cors");
 app.use(express.json());
  
+const port = process.env.PORT || 5000;
 const pizzasRoute =require("./routes/pizzasRoute")
 const userRoute =require("./routes/userRoute")
 const ordersRoute =require("./routes/ordersRoute")
@@ -22,5 +24,6 @@ app.get("/",(req,res)=>{
 })
 
 
- 
-app.listen(process.env.PORT || 3001)  
+app.listen(port, ()=>{
+    console.log('listening to', port)
+    })
